@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="row py-3 d-flex align-items-center">
+    <div class="col-6">
+        <button *ngIf="step > 1" class="btn btn-info" (click)="prevStep()"> < </button>
+    </div>
+    <div class="col-6 text-right">
+        <p class="m-0">Step: {{step}}/3</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="progress mt-2">
+        <div class="progress-bar" role="progressbar" [style.width]="fillPorcent + '%'" aria-valuenow="50"
+          aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-sm-12">
+      <div class="jumbotron">
+        <app-step1 *ngIf="step === 1"></app-step1>
+        <app-step2 *ngIf="step === 2"></app-step2>
+        <app-step3 *ngIf="step === 3"></app-step3>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="step != 3">
+    <div class="col-sm-12">
+      <button class="btn btn-primary btn-block" (click)="nextStep()">{{btnString}}</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="step == 3">
+    <div class="col-sm-12">
+      <button class="btn btn-primary btn-block" (click)="finishSteps()">Finalizar</button>
+    </div>
+  </div>
+</div>
